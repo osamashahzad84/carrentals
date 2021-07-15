@@ -122,6 +122,10 @@ a.brand{
 /*image*/
 img{
   border-radius: 0.5rem;
+  float: left;
+  width:  450px;
+  height: 250px;
+  object-fit: cover;
 }
 img.medium{
   max-width: 29rem;
