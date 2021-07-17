@@ -10,7 +10,7 @@ export default function ProductScreen(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
     const productDetails = useSelector((state) => state.productDetails);
-    const { loading, Error, product } = productDetails;
+    const { loading, error, product } = productDetails;
     
     useEffect(() => {
         dispatch(detailsProduct(productId))
@@ -20,8 +20,8 @@ export default function ProductScreen(props) {
         <div>
         {loading? (
         <LoadingBox></LoadingBox>
-        ) : Error ? (
-        <MessageBox variant="danger">{Error}</MessageBox>
+        ) : error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
         ) : (
         <div>
       <Link to="/">Back to Results</Link>
