@@ -12,7 +12,7 @@ function App() {
            <a className="brand" href="/">CarRentals</a>
           </div>
           <div>
-           <a href="/history">History</a>
+           <a href="/Favourites">Favourites</a>
            <a href="/signin">Sign In</a>
           </div>
         </header>
