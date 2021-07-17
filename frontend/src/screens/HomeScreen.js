@@ -9,7 +9,7 @@ export default function HomeScreen() {
 
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-  const { loading, Error, products } = productList;
+  const { loading, error, products } = productList;
 
   useEffect(() => {
     dispatch(listProducts());
@@ -18,8 +18,8 @@ export default function HomeScreen() {
       <div>
         {loading? (
         <LoadingBox></LoadingBox>
-        ) : Error ? (
-        <MessageBox variant="danger">{Error}</MessageBox>
+        ) : error ? (
+        <MessageBox variant="danger">{error}</MessageBox>
         ) : (
 
           <div className="row center">
