@@ -16,8 +16,8 @@ export default function ProductScreen(props) {
     useEffect(() => {
         dispatch(detailsProduct(productId))
     }, [dispatch, productId]);
-    const addToFavouritesHandler = () => {
-        props.history.push(`/favourites/${productId}?day=${day}`);
+    const addToBookingsHandler = () => {
+        props.history.push(`/bookings/${productId}?day=${day}`);
     }
     return (
         <div>
@@ -79,7 +79,7 @@ export default function ProductScreen(props) {
                                                         <div>
                                                             <select value={day} onChange={e => setDay(e.target.value)}>
                                                                 {
-                                                                    [...Array(7).keys()].map(x => (
+                                                                    [...Array(15).keys()].map(x => (
                                                                         <option key={x + 1} value={x + 1}>{x + 1} </option>
                                                                     ))
                                                                 }
@@ -89,7 +89,7 @@ export default function ProductScreen(props) {
 
                                                 </li>
                                                 <li>
-                                                    <button onClick={addToFavouritesHandler} className="primary block">Add to Favourites</button>
+                                                    <button onClick={addToBookingsHandler} className="primary block">Add to Bookings</button>
                                                 </li>
                                             </>
                                         )}

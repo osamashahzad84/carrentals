@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import FavouritesScreen from './screens/FavouritesScreen';
+import BookingsScreen from './screens/BookingsScreen';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 
@@ -13,12 +13,12 @@ function App() {
             <a className="brand" href="/">CarRentals</a>
           </div>
           <div>
-            <a href="/Favourites">Favourites</a>
+            <a href="/bookings">Bookings</a>
             <a href="/signin">Sign In</a>
           </div>
         </header>
         <main>
-          <Route path="/favourites/:id?" component={FavouritesScreen}></Route>
+          <Route path="/bookings/:id?" component={BookingsScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
           <Route path="/product/:id" component={ProductScreen}></Route>
         </main>
