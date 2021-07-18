@@ -147,7 +147,8 @@ img.medium{
 }
 
 img.large{
-  width: 100%;
+  width: 90%;
+  height: auto;
 }
 /*card*/
 .card{
