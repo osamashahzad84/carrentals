@@ -133,6 +133,10 @@ a.brand{
 .col-2{
   flex: 2 1 50rem;
 }
+
+.min-30{
+  min-width: 15rem;
+}
 /*image*/
 img{
   border-radius: 0.5rem;
@@ -141,6 +145,13 @@ img{
   height: 250px;
   object-fit: cover;
 }
+
+img.small{
+  max-width: 12rem;
+  width: 100%;
+  height: 100px;
+}
+
 img.medium{
   max-width: 29rem;
   width: 100%;
