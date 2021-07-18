@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToBooking } from '../actions/bookingActions';
+import { addToBooking, removeFromBooking } from '../actions/bookingActions';
 import MessageBox from '../components/MessageBox';
 
 export default function BookingsScreen(props) {
@@ -16,7 +16,7 @@ export default function BookingsScreen(props) {
         }
     }, [dispatch, productId, day]);
     const removeFromBookingHandler = (id) => {
-        //delete action
+        dispatch(removeFromBooking(id));
     };
     const confirmbookingHandler = () => {
         props.history.push('/signin?redirect=confirmedBookings');
@@ -26,7 +26,7 @@ export default function BookingsScreen(props) {
             <div className="col-2">
                 <h1>Unconfirmed Bookings List</h1>
                 {bookingItems.length === 0 ? <MessageBox>
-                    No Unconfirmed Bookings.<Link to="/">Start Renting :)</Link>
+                    No Unconfirmed Bookings.<Link to="/"> Start Renting :)</Link>
                 </MessageBox>
                     :
                     (

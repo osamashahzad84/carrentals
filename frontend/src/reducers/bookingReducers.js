@@ -1,4 +1,4 @@
-import { BOOKING_ADD_ITEM } from "../constants/bookingConstants";
+import { BOOKING_ADD_ITEM, BOOKING_REMOVE_ITEM } from "../constants/bookingConstants";
 
 export const bookingReducer = (state = { bookingItems: [] }, action) => {
     switch (action.type) {
@@ -15,6 +15,9 @@ export const bookingReducer = (state = { bookingItems: [] }, action) => {
                     ...state, bookingItems: [...state.bookingItems, item]
                 };
             }
+        case BOOKING_REMOVE_ITEM:
+            return { ...state, bookingItems: state.bookingItems.filter(x => x.product !== action.payload) 
+            };
         default:
             return state;
     }
