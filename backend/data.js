@@ -19,7 +19,7 @@ const data = {
         },
     ],
 
-    products: [
+    vehicles: [
         {
             _id: '1',
             name: 'Toyota Corolla',

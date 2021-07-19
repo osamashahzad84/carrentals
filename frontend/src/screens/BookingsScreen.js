@@ -5,16 +5,16 @@ import { addToBooking, removeFromBooking } from '../actions/bookingActions';
 import MessageBox from '../components/MessageBox';
 
 export default function BookingsScreen(props) {
-    const productId = props.match.params.id;
+    const vehicleId = props.match.params.id;
     const day = props.location.search ? Number(props.location.search.split('=')[1]) : 1;
     const booking = useSelector(state => state.booking);
     const { bookingItems } = booking;
     const dispatch = useDispatch()
     useEffect(() => {
-        if (productId) {
-            dispatch(addToBooking(productId, day));
+        if (vehicleId) {
+            dispatch(addToBooking(vehicleId, day));
         }
-    }, [dispatch, productId, day]);
+    }, [dispatch, vehicleId, day]);
     const removeFromBookingHandler = (id) => {
         dispatch(removeFromBooking(id));
     };
@@ -33,16 +33,16 @@ export default function BookingsScreen(props) {
                         <ul>
                             {
                                 bookingItems.map((item) => (
-                                    <li key={item.product}>
+                                    <li key={item.vehicle}>
                                         <div className="row">
                                             <div>
                                                 <img src={item.image} alt={item.name} className="small"></img>
                                             </div>
                                             <div className="min-30">
-                                                <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                                <Link to={`/vehicle/${item.vehicle}`}>{item.name}</Link>
                                             </div>
                                             <div>
-                                                <select value={item.day} onChange={e => dispatch(addToBooking(item.product, Number(e.target.value)))}>
+                                                <select value={item.day} onChange={e => dispatch(addToBooking(item.vehicle, Number(e.target.value)))}>
                                                     {
                                                         [...Array(15).keys()].map(x => (
                                                             <option key={x + 1} value={x + 1}>{x + 1} </option>
@@ -54,7 +54,7 @@ export default function BookingsScreen(props) {
                                                 PKR {item.price} per day
                                             </div>
                                             <div>
-                                                <button type="button" onClick={() => removeFromBookingHandler(item.product)}>Delete</button>
+                                                <button type="button" onClick={() => removeFromBookingHandler(item.vehicle)}>Delete</button>
                                             </div>
 
                                         </div>

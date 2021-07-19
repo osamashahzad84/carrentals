@@ -10,17 +10,17 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/carrentals', {
     useCreateIndex: true,
 })
 
-app.get('/api/products/:id', (req, res) => {
-    const product = data.products.find((x) => x._id === req.params.id);
-    if (product) {
-        res.send(product)
+app.get('/api/vehicles/:id', (req, res) => {
+    const vehicle = data.vehicles.find((x) => x._id === req.params.id);
+    if (vehicle) {
+        res.send(vehicle)
     } else {
         res.status(404).send({ message: 'Vehicle not Found' });
     }
 });
 
-app.get('/api/products', (req, res) => {
-    res.send(data.products);
+app.get('/api/vehicles', (req, res) => {
+    res.send(data.vehicles);
 });
 
 app.use('/api/users', userRouter);

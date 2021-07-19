@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { bookingReducer } from './reducers/bookingReducers';
-import { productDetailsReducer, productListReducer } from './reducers/productReducers';
+import { vehicleDetailsReducer, vehicleListReducer } from './reducers/vehicleReducers';
 
 const initialState = {
     booking: {
@@ -9,8 +9,8 @@ const initialState = {
     },
 };
 const reducer = combineReducers({
-    productList: productListReducer,
-    productDetails: productDetailsReducer,
+    vehicleList: vehicleListReducer,
+    vehicleDetails: vehicleDetailsReducer,
     booking: bookingReducer,
 })
 
