@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import data from './data.js';
 import userRouter from './routers/userRouter.js';
+import vehicleRouter from './routers/vehicleRouter.js';
 
 const app = express();
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/carrentals', {
@@ -10,20 +10,9 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/carrentals', {
     useCreateIndex: true,
 })
 
-app.get('/api/vehicles/:id', (req, res) => {
-    const vehicle = data.vehicles.find((x) => x._id === req.params.id);
-    if (vehicle) {
-        res.send(vehicle)
-    } else {
-        res.status(404).send({ message: 'Vehicle not Found' });
-    }
-});
-
-app.get('/api/vehicles', (req, res) => {
-    res.send(data.vehicles);
-});
-
 app.use('/api/users', userRouter);
+
+app.use('/api/vehicles', vehicleRouter)
 
 app.get('/', (req, res) => {
     res.send('Server is ready');

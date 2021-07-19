@@ -21,7 +21,6 @@ const data = {
 
     vehicles: [
         {
-            _id: '1',
             name: 'Toyota Corolla',
             category: 'Sedan',
             image: '/images/corolla1.jpg',
@@ -34,7 +33,6 @@ const data = {
 
         },
         {
-            _id: '2',
             name: 'Toyota Vitz',
             category: 'HatchBack',
             image: '/images/vitz.jpg',
@@ -47,7 +45,6 @@ const data = {
 
         },
         {
-            _id: '3',
             name: 'Toyota Prado',
             category: 'SUV',
             image: '/images/prado.jpg',
@@ -60,7 +57,6 @@ const data = {
 
         },
         {
-            _id: '4',
             name: 'Toyota Supra',
             category: 'Super Car',
             image: '/images/supra.jpg',
@@ -73,7 +69,6 @@ const data = {
 
         },
         {
-            _id: '5',
             name: 'Toyota Hiace',
             category: 'Van',
             image: '/images/hiace.jpg',
@@ -86,7 +81,6 @@ const data = {
 
         },
         {
-            _id: '6',
             name: 'Toyota Coaster',
             category: 'Bus',
             image: '/images/coaster.jpg',
