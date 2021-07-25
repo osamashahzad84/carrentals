@@ -21,9 +21,9 @@ export default function RegisterScreen(props) {
     const dispatch = useDispatch()
     const submitHandler = (e) => {
         e.preventDefault();
-        if(password !==confirmPassword){
+        if (password !== confirmPassword) {
             alert('Passwords do not match')
-        }else{
+        } else {
             dispatch(register(name, email, cnic, password))
         }
         dispatch(register(name, email, cnic, password))

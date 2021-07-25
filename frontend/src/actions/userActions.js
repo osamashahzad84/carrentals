@@ -7,7 +7,7 @@ export const register = (name, email, cnic, password) => async (dispatch) => {
         const { data } = await Axios.post('/api/users/register', { name, email, cnic, password })
         dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data })
-        localStorage.setItem("userInfo", JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
         dispatch({
             type: USER_REGISTER_FAIL,
@@ -21,7 +21,7 @@ export const signin = (email, password) => async (dispatch) => {
     try {
         const { data } = await Axios.post('/api/users/signin', { email, password })
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data })
-        localStorage.setItem("userInfo", JSON.stringify(data))
+        localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
         dispatch({
             type: USER_SIGNIN_FAIL,
@@ -31,8 +31,8 @@ export const signin = (email, password) => async (dispatch) => {
 }
 
 
-export const signout = () => (dispatch => {
+export const signout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
     localStorage.removeItem('bookingItems');
     dispatch({ type: USER_SIGNOUT })
-})
+}
