@@ -10,6 +10,7 @@ const initialState = {
     },
     booking: {
         bookingItems: localStorage.getItem('bookingItems') ? JSON.parse(localStorage.getItem('bookingItems')) : [],
+        completeBooking: localStorage.getItem('completeBooking') ? JSON.parse(localStorage.getItem('completeBooking')) : [],
     },
 };
 const reducer = combineReducers({
