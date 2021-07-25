@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
-import { signout } from './actions/userAction';
+import { signout } from './actions/userActions';
 import BookingsScreen from './screens/BookingsScreen';
 import HomeScreen from './screens/HomeScreen';
+import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
 import VehicleScreen from './screens/VehicleScreen';
 
@@ -33,7 +34,7 @@ function App() {
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
-                  {userInfo.nameL} <i className="fa fa-caret-down"></i>{' '}
+                  {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
                 <ul className="dropdown-content">
                   <li>
@@ -52,8 +53,8 @@ function App() {
           <Route path="/bookings/:id?" component={BookingsScreen}></Route>
           <Route path="/vehicle/:id" component={VehicleScreen}></Route>
           <Route path="/signin" component={SigninScreen}></Route>
+          <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
-
         </main>
         <footer className="row center">
           All rights reserved

@@ -191,6 +191,10 @@ img.large{
 }
 
 /*Alerts*/
+.loading{
+  display: block !important;
+}
+
 .Success{
 color: #20a020;
 }
