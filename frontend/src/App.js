@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import BookingsScreen from './screens/BookingsScreen';
 import HomeScreen from './screens/HomeScreen';
+import SigninScreen from './screens/SigninScreen';
 import VehicleScreen from './screens/VehicleScreen';
 
 function App() {
@@ -28,8 +29,10 @@ function App() {
         </header>
         <main>
           <Route path="/bookings/:id?" component={BookingsScreen}></Route>
-          <Route path="/" component={HomeScreen} exact></Route>
           <Route path="/vehicle/:id" component={VehicleScreen}></Route>
+          <Route path="/signin" component={SigninScreen}></Route>
+          <Route path="/" component={HomeScreen} exact></Route>
+          
         </main>
         <footer className="row center">
           All rights reserved
