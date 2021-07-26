@@ -5,6 +5,7 @@ import { signout } from './actions/userActions';
 import BookingsScreen from './screens/BookingsScreen';
 import CompleteBookingScreen from './screens/CompleteBookingScreen';
 import HomeScreen from './screens/HomeScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
 import VehicleScreen from './screens/VehicleScreen';
@@ -55,7 +56,8 @@ function App() {
           <Route path="/vehicle/:id" component={VehicleScreen}></Route>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
-          <Route path="/confirmedBookings" component={CompleteBookingScreen}></Route>
+          <Route path="/confirmedBooking" component={CompleteBookingScreen}></Route>
+          <Route path="/payment" component={PaymentMethodScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">

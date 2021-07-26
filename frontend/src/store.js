@@ -10,7 +10,8 @@ const initialState = {
     },
     booking: {
         bookingItems: localStorage.getItem('bookingItems') ? JSON.parse(localStorage.getItem('bookingItems')) : [],
-        completeBooking: localStorage.getItem('completeBooking') ? JSON.parse(localStorage.getItem('completeBooking')) : [],
+        completeBooking: localStorage.getItem('completeBooking') ? JSON.parse(localStorage.getItem('completeBooking')) : {},
+        paymentMethod: 'EasyPaisa',
     },
 };
 const reducer = combineReducers({

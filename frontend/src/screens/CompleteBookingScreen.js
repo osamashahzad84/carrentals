@@ -6,8 +6,8 @@ import BookingSteps from '../components/BookingSteps'
 export default function CompleteBookingScreen(props) {
     const userSignin = useSelector(state => state.userSignin)
     const { userInfo } = userSignin
-    const booking=useSelector(state=>state.booking)
-    const{completeBooking}=booking;
+    const booking = useSelector(state => state.booking)
+    const { completeBooking } = booking;
     if (!userInfo) {
         props.history.push('/signin')
     }
