@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
 import BookingsScreen from './screens/BookingsScreen';
+import BookVehicleScreen from './screens/BookVehicleScreen';
 import CompleteBookingScreen from './screens/CompleteBookingScreen';
 import HomeScreen from './screens/HomeScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
@@ -58,6 +59,7 @@ function App() {
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/confirmedBooking" component={CompleteBookingScreen}></Route>
           <Route path="/payment" component={PaymentMethodScreen}></Route>
+          <Route path="/bookvehicle" component={BookVehicleScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">

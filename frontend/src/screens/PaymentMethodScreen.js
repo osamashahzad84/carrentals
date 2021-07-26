@@ -5,8 +5,8 @@ import { savePaymentMethod } from '../actions/bookingActions';
 
 export default function PaymentMethodScreen(props) {
     const booking = useSelector((state) => state.booking);
-    const { confirmedBooking } = booking;
-    if (!confirmedBooking) {
+    const { completeBooking } = booking;
+    if (!completeBooking) {
         props.history.push('/confirmedBooking')
     }
     const [paymentMethod, setPaymentMethod] = useState('EasyPaisa');

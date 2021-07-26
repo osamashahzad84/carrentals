@@ -19,7 +19,7 @@ export default function BookingsScreen(props) {
         dispatch(removeFromBooking(id));
     };
     const confirmbookingHandler = () => {
-        props.history.push('/signin?redirect=confirmedBookings');
+        props.history.push('/signin?redirect=confirmedBooking');
     }
     return (
         <div className="row top">
