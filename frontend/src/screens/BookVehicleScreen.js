@@ -24,17 +24,18 @@ export default function BookVehicleScreen(props) {
                     <ul>
                         <li>
                             <div className="card card-body">
-                                <h2>Customer's Address</h2>
+                                <h2>Customer Details</h2>
                                 <p>
                                     <strong>Name: </strong> {booking.completeBooking.fullName} <br />
+                                    <strong>CNIC: </strong> {booking.completeBooking.idNum} <br />
                                     <strong>Address: </strong> {booking.completeBooking.address},
-                                    {booking.completeBooking.city},
+                                    {booking.completeBooking.city}
                                 </p>
                             </div>
                         </li>
                         <li>
                             <div className="card card-body">
-                                <h2>Payment</h2>
+                                <h2>Payment Details</h2>
                                 <p>
                                     <strong>Method of Payment: </strong> {booking.paymentMethod} <br />
                                 </p>

@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routers/userRouter.js';
 import vehicleRouter from './routers/vehicleRouter.js';
+import bookingRouter from './routers/bookingRouter.js';
 
 dotenv.config();
 const app = express();
@@ -17,7 +18,9 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/carrentals', {
 
 app.use('/api/users', userRouter);
 
-app.use('/api/vehicles', vehicleRouter)
+app.use('/api/vehicles', vehicleRouter);
+
+app.use('/api/bookings',bookingRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is ready');

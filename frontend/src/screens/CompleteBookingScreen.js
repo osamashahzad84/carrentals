@@ -12,12 +12,13 @@ export default function CompleteBookingScreen(props) {
         props.history.push('/signin')
     }
     const [fullName, setFullName] = useState(completeBooking.fullName);
+    const [idNum, setIdNum] = useState(completeBooking.cnic);
     const [address, setAddress] = useState(completeBooking.address);
     const [city, setCity] = useState(completeBooking.city);
     const dispatch = useDispatch();
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveCompleteBooking({ fullName, address, city }))
+        dispatch(saveCompleteBooking({ fullName, idNum, address, city }))
         props.history.push('/payment')
     }
     return (
@@ -30,6 +31,11 @@ export default function CompleteBookingScreen(props) {
                 <div>
                     <label htmlFor="fullName">Full Name</label>
                     <input type="text" id="fullName" placeholder="Enter full name" value={fullName} onChange={(e) => setFullName(e.target.value)} required>
+                    </input>
+                </div>
+                <div>
+                    <label htmlFor="idNum">CNIC</label>
+                    <input type="text" minLength="13" maxLength="13" pattern="\d{13}" id="idNum" placeholder="Enter 13 digit CNIC without -" value={idNum} onChange={(e) => setIdNum(e.target.value)} required>
                     </input>
                 </div>
                 <div>

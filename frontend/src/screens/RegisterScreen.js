@@ -56,8 +56,8 @@ export default function RegisterScreen(props) {
                 </div>
                 <div>
                     <label htmlFor="cnic">CNIC</label>
-                    <input type="string" id="cnic" placeholder="Enter your CNIC" required
-                        onChange={e => setCnic(e.target.value)}>
+                    <input type="text" minLength="13" maxLength="13" pattern="\d{13}" id="cnic" placeholder="Enter 13 digit CNIC without -"
+                        required onChange={(e) => setCnic(e.target.value)}>
                     </input>
                 </div>
                 <div>
