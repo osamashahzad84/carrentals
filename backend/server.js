@@ -8,7 +8,7 @@ import bookingRouter from './routers/bookingRouter.js';
 dotenv.config();
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/carrentals', {
     useNewUrlParser: true,
@@ -20,7 +20,7 @@ app.use('/api/users', userRouter);
 
 app.use('/api/vehicles', vehicleRouter);
 
-app.use('/api/bookings',bookingRouter);
+app.use('/api/bookings', bookingRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is ready');

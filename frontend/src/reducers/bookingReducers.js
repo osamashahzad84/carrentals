@@ -1,4 +1,4 @@
-import { BOOKING_ADD_ITEM, BOOKING_REMOVE_ITEM, BOOKING_SAVE_COMPLETE_BOOKING, BOOKING_SAVE_PAYMENT_METHOD } from "../constants/bookingConstants";
+import { BOOKING_ADD_ITEM, BOOKING_EMPTY, BOOKING_REMOVE_ITEM, BOOKING_SAVE_COMPLETE_BOOKING, BOOKING_SAVE_PAYMENT_METHOD } from "../constants/bookingConstants";
 
 export const bookingReducer = (state = { bookingItems: [] }, action) => {
     switch (action.type) {
@@ -26,6 +26,10 @@ export const bookingReducer = (state = { bookingItems: [] }, action) => {
         case BOOKING_SAVE_PAYMENT_METHOD:
             return {
                 ...state, paymentMethod: action.payload
+            }
+        case BOOKING_EMPTY:
+            return {
+                ...state, bookingItems: []
             }
         default:
             return state;

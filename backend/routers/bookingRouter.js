@@ -1,6 +1,6 @@
 import express from 'express'
 import expressAsyncHandler from 'express-async-handler';
-import Booking from '../models/bookingModel.js';
+import Book from '../models/bookingModel.js';
 import { isAuth } from '../utils.js';
 
 const bookingRouter = express.Router();
@@ -11,7 +11,7 @@ bookingRouter.post('/',
         if (req.body.bookingItems.length === 0) {
             res.status(400).send({ message: 'Booking List is empty' })
         } else {
-            const booking = new Booking({
+            const book = new Book({
                 bookingItems: req.body.bookingItems,
                 completeBooking: req.body.completeBooking,
                 paymentMethod: req.body.paymentMethod,
@@ -20,10 +20,10 @@ bookingRouter.post('/',
                 totalPrice: req.body.totalPrice,
                 user: req.user._id,
             })
-            const createdBooking = await booking.save();
-            res.status(201).send({ message: 'New Booking Created', booking: createdBooking })
+            const createdBook = await book.save();
+            res.status(201).send({ message: 'New Booking Created', book: createdBook })
         }
     }
     ))
 
-    export default bookingRouter;
+export default bookingRouter;

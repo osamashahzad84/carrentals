@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
 const bookingSchema = new mongoose.Schema({
-    orderItems: [{
+    bookingItems: [{
         name: { type: String, required: true },
         day: { type: Number, required: true },
-        img: { type: String, required: true },
+        image: { type: String, required: true },
         price: { type: Number, required: true },
         vehicle: {
             type: mongoose.Schema.Types.ObjectId,
@@ -22,7 +22,7 @@ const bookingSchema = new mongoose.Schema({
     carrentalsPrice: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
     user: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User', required: true,
     },
     isPaid: { type: Boolean, default: false },
@@ -34,5 +34,5 @@ const bookingSchema = new mongoose.Schema({
     }
 )
 
-const Booking=mongoose.model('Booking',bookingSchema);
-export default Booking;
+const Book=mongoose.model('Booking',bookingSchema);
+export default Book;
