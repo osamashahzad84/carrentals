@@ -25,7 +25,7 @@ export default function BookVehicleScreen(props) {
     }
     useEffect(() => {
         if (success) {
-            props.history.push(`/booking/${booking.book._id}`);
+            props.history.push(`/booked/${booking.book._id}`);
             dispatch({ type: BOOK_CREATE_RESET });
         }
     }, [dispatch,  props.history, success, booking]);
