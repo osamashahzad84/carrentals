@@ -26,7 +26,6 @@ export default function RegisterScreen(props) {
         } else {
             dispatch(register(name, email, cnic, password))
         }
-        dispatch(register(name, email, cnic, password))
     }
 
     useEffect(() => {
@@ -68,7 +67,7 @@ export default function RegisterScreen(props) {
                 </div>
                 <div>
                     <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input type="password" id="password" placeholder="Re-enter password" required
+                    <input type="password" id="confirmPassword" placeholder="Re-enter password" required
                         onChange={e => setConfirmPassword(e.target.value)}>
                     </input>
                 </div>

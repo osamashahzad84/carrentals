@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
 import BookedScreen from './screens/BookedScreen';
+import BookingHistoryScreen from './screens/BookingHistoryScreen';
 import BookingsScreen from './screens/BookingsScreen';
 import BookVehicleScreen from './screens/BookVehicleScreen';
 import CompleteBookingScreen from './screens/CompleteBookingScreen';
@@ -41,6 +42,9 @@ function App() {
                   {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
                 <ul className="dropdown-content">
+                <li>
+                    <Link to="/bookingHistory">Booking History</Link>
+                  </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
                       Sign Out
@@ -62,10 +66,11 @@ function App() {
           <Route path="/payment" component={PaymentMethodScreen}></Route>
           <Route path="/bookvehicle" component={BookVehicleScreen}></Route>
           <Route path="/booked/:id" component={BookedScreen}></Route>
+          <Route path="/bookingHistory" component={BookingHistoryScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">
-          All rights reserved
+          All rights reserved :)
         </footer>
       </div>
     </BrowserRouter>

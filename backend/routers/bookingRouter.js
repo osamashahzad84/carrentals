@@ -4,7 +4,10 @@ import Book from '../models/bookingModel.js';
 import { isAuth } from '../utils.js';
 
 const bookingRouter = express.Router();
-
+bookingRouter.get('/mine', isAuth, expressAsyncHandler(async (req, res) => {
+    const books = await Book.find({ user: req.user._id })
+    res.send(books);
+}))
 bookingRouter.post('/',
     isAuth,
     expressAsyncHandler(async (req, res) => {
