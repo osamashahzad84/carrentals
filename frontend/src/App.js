@@ -43,7 +43,7 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                 <li>
-                    <Link to="/bookingHistory">Booking History</Link>
+                    <Link to="/bookingHistory">Ex Bookings</Link>
                   </li>
                   <li>
                     <Link to="#signout" onClick={signoutHandler}>
