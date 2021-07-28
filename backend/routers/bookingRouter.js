@@ -36,4 +36,24 @@ bookingRouter.get('/:id', isAuth, expressAsyncHandler(async (req, res) => {
 }
 ))
 
+/*bookingRouter.put(
+    '/:id/pay', isAuth,expressAsyncHandler(async(req,res)=>{
+        const book=await Book.findById(req.params.id);
+        if (book){
+            book.isPaid=true;
+            book.paidAt=Date.now();
+            book.paymentResult={
+                id:req.body.id,
+                status:req.body.status,
+                update_time:req.body.update_time,
+                email_address:req.body.email_address,
+            }
+           const updatedBook=await book.save();
+           res.send({message:'Booking is Paid',book:updatedBook}) 
+        }else{
+            res.status(404).send({message:'Booking Not Found'})
+        }
+    })
+)*/
+
 export default bookingRouter;
