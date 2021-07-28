@@ -15,7 +15,7 @@ export const bookCreateReducer = (state = {}, action) => {
     }
 }
 
-export const bookDetailsReducer = (state = { loading: true, book: {} }, action) => {
+export const bookDetailsReducer = (state = { loading: true }, action) => {
     switch (action.type) {
         case BOOK_DETAILS_REQUEST:
             return { loading: true };

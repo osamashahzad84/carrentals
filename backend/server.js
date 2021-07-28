@@ -22,6 +22,10 @@ app.use('/api/vehicles', vehicleRouter);
 
 app.use('/api/bookings', bookingRouter);
 
+/*app.get('/api/config/easypaisa',(req,res)=> {
+    res.send(process.env.EASYPAISA_CLIENT_ID || 'sb' ) //sb means sandbox
+})*/
+
 app.get('/', (req, res) => {
     res.send('Server is ready');
 });

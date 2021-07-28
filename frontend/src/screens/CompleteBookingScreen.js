@@ -12,7 +12,7 @@ export default function CompleteBookingScreen(props) {
         props.history.push('/signin')
     }
     const [fullName, setFullName] = useState(completeBooking.fullName);
-    const [idNum, setIdNum] = useState(completeBooking.cnic);
+    const [idNum, setIdNum] = useState(completeBooking.idNum);
     const [address, setAddress] = useState(completeBooking.address);
     const [city, setCity] = useState(completeBooking.city);
     const dispatch = useDispatch();
