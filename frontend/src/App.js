@@ -9,6 +9,7 @@ import BookVehicleScreen from './screens/BookVehicleScreen';
 import CompleteBookingScreen from './screens/CompleteBookingScreen';
 import HomeScreen from './screens/HomeScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
+import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
 import VehicleScreen from './screens/VehicleScreen';
@@ -42,7 +43,10 @@ function App() {
                   {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
                 </Link>
                 <ul className="dropdown-content">
-                <li>
+                  <li>
+                    <Link to="/profile">User Profile</Link>
+                  </li>
+                  <li>
                     <Link to="/bookingHistory">Ex Bookings</Link>
                   </li>
                   <li>
@@ -67,6 +71,7 @@ function App() {
           <Route path="/bookvehicle" component={BookVehicleScreen}></Route>
           <Route path="/booked/:id" component={BookedScreen}></Route>
           <Route path="/bookingHistory" component={BookingHistoryScreen}></Route>
+          <Route path="/profile" component={ProfileScreen}></Route>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">

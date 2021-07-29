@@ -37,7 +37,7 @@ userRouter.post('/signin', expressAsyncHandler(async (req, res) => {
 userRouter.post('/register', expressAsyncHandler(async (req, res) => {
     const user = new User({
         name: req.body.name, email: req.body.email,
-        cnic: req.body.cnic, 
+        cnic: req.body.cnic,
         password: bcrypt.hashSync(req.body.password, 8),
     });
     const createdUser = await user.save();
@@ -49,6 +49,15 @@ userRouter.post('/register', expressAsyncHandler(async (req, res) => {
         isAdmin: createdUser.isAdmin,
         token: generateToken(createdUser),
     })
+}))
+
+userRouter.get('/:id', expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+        res.send(user);
+    } else {
+        res.status(404).send({ message: 'User Mot Found' })
+    }
 }))
 
 export default userRouter;
