@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { VEHICLE_LIST_REQUEST, VEHICLE_LIST_SUCCESS, VEHICLE_LIST_FAIL, VEHICLE_DETAILS_REQUEST, VEHICLE_DETAILS_SUCCESS, VEHICLE_DETAILS_FAIL, VEHICLE_CREATE_REQUEST, VEHICLE_CREATE_FAIL, VEHICLE_CREATE_SUCCESS } from "../constants/vehicleConstants";
+import { VEHICLE_LIST_REQUEST, VEHICLE_LIST_SUCCESS, VEHICLE_LIST_FAIL, VEHICLE_DETAILS_REQUEST, VEHICLE_DETAILS_SUCCESS, VEHICLE_DETAILS_FAIL, VEHICLE_CREATE_REQUEST, VEHICLE_CREATE_FAIL, VEHICLE_CREATE_SUCCESS, VEHICLE_UPDATE_REQUEST, VEHICLE_UPDATE_FAIL, VEHICLE_UPDATE_SUCCESS } from "../constants/vehicleConstants";
 
 export const listVehicles = () => async (dispatch) => {
     dispatch({
@@ -42,3 +42,22 @@ export const createVehicle = () => async (dispatch, getState) => {
         dispatch({ type: VEHICLE_CREATE_FAIL, payload: message })
     }
 }
+
+export const updateVehicle = (vehicle) => async (dispatch, getState) => {
+    dispatch({ type: VEHICLE_UPDATE_REQUEST, payload: vehicle });
+    const {
+      userSignin: { userInfo },
+    } = getState();
+    try {
+      const { data } = await Axios.put(`/api/vehicles/${vehicle._id}`, vehicle, {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      });
+      dispatch({ type: VEHICLE_UPDATE_SUCCESS, payload: data });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({ type: VEHICLE_UPDATE_FAIL, error: message });
+    }
+  };

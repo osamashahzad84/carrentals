@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { detailsVehicle } from '../actions/vehicleActions';
+import { detailsVehicle, updateVehicle } from '../actions/vehicleActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import { VEHICLE_UPDATE_RESET } from '../constants/vehicleConstants';
 
 export default function VehicleEditScreen(props) {
     const vehicleId = props.match.params.id;
@@ -16,9 +17,18 @@ export default function VehicleEditScreen(props) {
 
     const vehicleDetails = useSelector(state => state.vehicleDetails)
     const { loading, error, vehicle } = vehicleDetails;
+
+    const vehicleUpdate = useSelector(state => state.vehicleUpdate);
+    const { loading: loadingUpdate, error: errorUpdate,
+        success: successUpdate } = vehicleUpdate;
+
     const dispatch = useDispatch();
     useEffect(() => {
-        if (!vehicle || (vehicle._id !== vehicleId)) {
+        if (successUpdate) {
+            props.history.push('/vehiclelist');
+        }
+        if (!vehicle || vehicle._id !== vehicleId || successUpdate) {
+            dispatch({ type: VEHICLE_UPDATE_RESET })
             dispatch(detailsVehicle(vehicleId))
         } else {
             setName(vehicle.name);
@@ -29,11 +39,15 @@ export default function VehicleEditScreen(props) {
             setManufacturer(vehicle.manufacturer);
             setDescription(vehicle.description);
         }
-    }, [dispatch, vehicle, vehicleId])
+    }, [dispatch, vehicle, vehicleId, successUpdate, props.history])
 
     const submitHandler = (e) => {
         e.preventDefault();
-        //TODO: dispatch update vehicle
+        dispatch(updateVehicle({
+            _id: vehicleId, name, price, image,
+            category, manufacturer, countInStock, description
+        })
+        )
     }
     return (
         <div>
@@ -41,6 +55,8 @@ export default function VehicleEditScreen(props) {
                 <div>
                     <h1>Edit Vehicle {vehicleId}</h1>
                 </div>
+                {loadingUpdate && <LoadingBox></LoadingBox>}
+                {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
                 {loading ? <LoadingBox></LoadingBox>
                     :
                     error ? <MessageBox variant="danger">{error}</MessageBox>

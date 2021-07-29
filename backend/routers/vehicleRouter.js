@@ -51,4 +51,21 @@ vehicleRouter.post('/', isAuth, isAdmin, expressAsyncHandler(async (req, res) =>
     res.send({ message: 'Vehicle Added Successfully', vehicle: createdVehicle })
 }))
 
+vehicleRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+    const vehicleId = req.params.id;
+    const vehicle = await Vehicle.findById(vehicleId);
+    if (vehicle) {
+        vehicle.name = req.body.name;
+        vehicle.price = req.body.price;
+        vehicle.image = req.body.image;
+        vehicle.category = req.body.category;
+        vehicle.manufacturer = req.body.manufacturer;
+        vehicle.countInStock = req.body.countInStock;
+        vehicle.description = req.body.description;
+        const updatedVehicle = await vehicle.save();
+        res.send({ message: 'Vehicle Updated Successfully', vehicle: updatedVehicle })
+    } else {
+        res.status(404).send({ message: 'Vehicle Not Found' })
+    }
+}))
 export default vehicleRouter;
