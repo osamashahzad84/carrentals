@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
+import AdminRoute from './components/AdminRoute';
 import PrivateRoute from './components/PrivateRoute';
 import BookedScreen from './screens/BookedScreen';
 import BookingHistoryScreen from './screens/BookingHistoryScreen';
@@ -13,6 +14,7 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
+import VehicleListScreen from './screens/VehicleListScreen';
 import VehicleScreen from './screens/VehicleScreen';
 
 function App() {
@@ -92,6 +94,7 @@ function App() {
           <Route path="/booked/:id" component={BookedScreen}></Route>
           <Route path="/bookingHistory" component={BookingHistoryScreen}></Route>
           <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
+          <AdminRoute path="/vehiclelist" component={VehicleListScreen}></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">
