@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { bookingReducer } from './reducers/bookingReducers';
 import { bookCreateReducer, bookDetailsReducer, bookMineListReducer } from './reducers/bookReducers';
 import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer } from './reducers/userReducers';
-import { vehicleDetailsReducer, vehicleListReducer } from './reducers/vehicleReducers';
+import { vehicleCreateReducer, vehicleDetailsReducer, vehicleListReducer } from './reducers/vehicleReducers';
 
 const initialState = {
     userSignin: {
@@ -27,6 +27,7 @@ const reducer = combineReducers({
     bookMineList: bookMineListReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
+    vehicleCreate: vehicleCreateReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

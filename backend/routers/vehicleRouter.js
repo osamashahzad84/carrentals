@@ -2,6 +2,7 @@ import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import data from '../data.js';
 import Vehicle from '../models/vehicleModel.js';
+import { isAdmin, isAuth } from '../utils.js';
 
 const vehicleRouter = express.Router();
 
@@ -33,5 +34,21 @@ vehicleRouter.get('/:id', expressAsyncHandler(async (req, res) => {
         res.status(404).send({ message: 'Vehicle Not Found' })
     }
 }));
+
+vehicleRouter.post('/', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+    const vehicle = new Vehicle({
+        name: 'Sample Name' + Date.now(),
+        category: 'Sample Category',
+        image: '/images/corolla1.jpg',
+        price: 0,
+        countInStock: 0,
+        manufacturer: 'Sample',
+        rating: 0,
+        numReviews: 0,
+        description: 'Sample Description.',
+    })
+    const createdVehicle = await vehicle.save();
+    res.send({ message: 'Vehicle Added Successfully', vehicle: createdVehicle })
+}))
 
 export default vehicleRouter;

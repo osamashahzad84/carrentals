@@ -85,7 +85,7 @@ function App() {
         </header>
         <main>
           <Route path="/bookings/:id?" component={BookingsScreen}></Route>
-          <Route path="/vehicle/:id" component={VehicleScreen}></Route>
+          <Route path="/vehicle/:id" component={VehicleScreen} exact></Route>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/confirmedBooking" component={CompleteBookingScreen}></Route>

@@ -1,22 +1,45 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { listVehicles } from '../actions/vehicleActions';
+import { createVehicle, listVehicles } from '../actions/vehicleActions';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
+import { VEHICLE_CREATE_RESET } from '../constants/vehicleConstants';
 
 export default function VehicleListScreen(props) {
     const vehicleList = useSelector(state => state.vehicleList)
     const { loading, error, vehicles } = vehicleList;
+
+    const vehicleCreate = useSelector(state => state.vehicleCreate);
+    const {
+        loading: loadingCreate,
+        error: errorCreate,
+        success: successCreate,
+        vehicle: createdVehicle,
+    } = vehicleCreate;
     const dispatch = useDispatch();
     useEffect(() => {
+        if (successCreate) {
+            dispatch({ type: VEHICLE_CREATE_RESET })
+            props.history.push(`/vehicle/${createdVehicle._id}/edit`)
+        }
         dispatch(listVehicles())
-    }, [dispatch])
+    }, [createdVehicle, dispatch, props.history, successCreate])
     const deleteHandler = () => {
         //TODO: dispatch delete action
     }
+    const createHandler = () => {
+        dispatch(createVehicle());
+    }
     return (
         <div>
-            <h1>Vehicles</h1>
+            <div className="row">
+                <h1>Vehicles</h1>
+                <button type="button" className="primary" onClick={createHandler}>
+                    Add New Vehicle
+                </button>
+            </div>
+            {loadingCreate && <LoadingBox></LoadingBox>}
+            {errorCreate && <MessageBox variant="danger">{errorCreate}</MessageBox>}
             {loading ? <LoadingBox></LoadingBox>
                 :
                 error ? <MessageBox variant="danger">{error}</MessageBox>
