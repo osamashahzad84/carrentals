@@ -14,6 +14,7 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
+import VehicleEditScreen from './screens/VehicleEditScreen';
 import VehicleListScreen from './screens/VehicleListScreen';
 import VehicleScreen from './screens/VehicleScreen';
 
@@ -86,6 +87,7 @@ function App() {
         <main>
           <Route path="/bookings/:id?" component={BookingsScreen}></Route>
           <Route path="/vehicle/:id" component={VehicleScreen} exact></Route>
+          <Route path="/vehicle/:id/edit" component={VehicleEditScreen} exact></Route>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/confirmedBooking" component={CompleteBookingScreen}></Route>

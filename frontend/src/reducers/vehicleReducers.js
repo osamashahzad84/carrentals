@@ -13,7 +13,7 @@ export const vehicleListReducer = (state = { loading: true, vehicles: [] }, acti
     }
 }
 
-export const vehicleDetailsReducer = (state = { vehicle: [], loading: true }, action) => {
+export const vehicleDetailsReducer = (state = { loading: true }, action) => {
     switch (action.type) {
         case VEHICLE_DETAILS_REQUEST:
             return { loading: true };
