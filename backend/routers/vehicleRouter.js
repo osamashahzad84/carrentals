@@ -68,4 +68,15 @@ vehicleRouter.put('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) 
         res.status(404).send({ message: 'Vehicle Not Found' })
     }
 }))
+
+vehicleRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+    const vehicle = await Vehicle.findById(req.params.id);
+    if (vehicle) {
+        const deleteVehicle = await vehicle.remove();
+        res.send({ message: 'Vehicle Deleted', vehicle: deleteVehicle })
+    } else {
+        res.status(404).send({ message: 'Vehicle Not Found' })
+    }
+}))
+
 export default vehicleRouter;

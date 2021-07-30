@@ -1,4 +1,4 @@
-const { VEHICLE_LIST_REQUEST, VEHICLE_LIST_SUCCESS, VEHICLE_LIST_FAIL, VEHICLE_DETAILS_REQUEST, VEHICLE_DETAILS_FAIL, VEHICLE_DETAILS_SUCCESS, VEHICLE_CREATE_RESET, VEHICLE_CREATE_REQUEST, VEHICLE_CREATE_SUCCESS, VEHICLE_CREATE_FAIL, VEHICLE_UPDATE_REQUEST, VEHICLE_UPDATE_SUCCESS, VEHICLE_UPDATE_FAIL, VEHICLE_UPDATE_RESET } = require("../constants/vehicleConstants");
+const { VEHICLE_LIST_REQUEST, VEHICLE_LIST_SUCCESS, VEHICLE_LIST_FAIL, VEHICLE_DETAILS_REQUEST, VEHICLE_DETAILS_FAIL, VEHICLE_DETAILS_SUCCESS, VEHICLE_CREATE_RESET, VEHICLE_CREATE_REQUEST, VEHICLE_CREATE_SUCCESS, VEHICLE_CREATE_FAIL, VEHICLE_UPDATE_REQUEST, VEHICLE_UPDATE_SUCCESS, VEHICLE_UPDATE_FAIL, VEHICLE_UPDATE_RESET, VEHICLE_DELETE_REQUEST, VEHICLE_DELETE_SUCCESS, VEHICLE_DELETE_FAIL, VEHICLE_DELETE_RESET } = require("../constants/vehicleConstants");
 
 export const vehicleListReducer = (state = { loading: true, vehicles: [] }, action) => {
     switch (action.type) {
@@ -50,6 +50,21 @@ export const vehicleUpdateReducer = (state = {}, action) => {
         case VEHICLE_UPDATE_FAIL:
             return { loading: false, error: action.payload }
         case VEHICLE_UPDATE_RESET:
+            return {};
+        default:
+            return state;
+    }
+}
+
+export const vehicleDeleteReducer = (state = {}, action) => {
+    switch (action.type) {
+        case VEHICLE_DELETE_REQUEST:
+            return { loading: true };
+        case VEHICLE_DELETE_SUCCESS:
+            return { loading: false, success: true }
+        case VEHICLE_DELETE_FAIL:
+            return { loading: false, error: action.payload }
+        case VEHICLE_DELETE_RESET:
             return {};
         default:
             return state;

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import { bookingReducer } from './reducers/bookingReducers';
 import { bookCreateReducer, bookDetailsReducer, bookMineListReducer } from './reducers/bookReducers';
 import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer } from './reducers/userReducers';
-import { vehicleCreateReducer, vehicleDetailsReducer, vehicleListReducer, vehicleUpdateReducer } from './reducers/vehicleReducers';
+import { vehicleCreateReducer, vehicleDeleteReducer, vehicleDetailsReducer, vehicleListReducer, vehicleUpdateReducer } from './reducers/vehicleReducers';
 
 const initialState = {
     userSignin: {
@@ -29,6 +29,7 @@ const reducer = combineReducers({
     userUpdateProfile: userUpdateProfileReducer,
     vehicleCreate: vehicleCreateReducer,
     vehicleUpdate: vehicleUpdateReducer,
+    vehicleDelete: vehicleDeleteReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
