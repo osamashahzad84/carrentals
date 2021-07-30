@@ -32,8 +32,8 @@
     "eslint-plugin-react": "^7.24.0",
     "nodemon": "^2.0.12"
   },
-  "engines": {
+  /*"engines": {
     "node": "12.4.0",
     "npm": "6.9.0"
-  }
+  }*/
 }
