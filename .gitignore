@@ -27,3 +27,5 @@ yarn-error.log*
 .gitignore
 package-lock.json
 package-lock.json
+/uploads/*.jpg
+package-lock.json
