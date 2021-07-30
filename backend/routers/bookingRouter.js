@@ -65,4 +65,14 @@ bookingRouter.get('/:id', isAuth, expressAsyncHandler(async (req, res) => {
     })
 )*/
 
+bookingRouter.delete('/:id', isAuth, isAdmin, expressAsyncHandler(async (req, res) => {
+    const book = await Book.findById(req.params.id);
+    if (book) {
+        const deleteBook = await book.remove();
+        res.send({ message: 'Booking Deleted', book: deleteBook })
+    } else {
+        res.status(404).send({ message: 'Booking Not Found' })
+    }
+}))
+
 export default bookingRouter;

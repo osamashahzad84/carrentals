@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import { BOOKING_EMPTY } from '../constants/bookingConstants';
-import { BOOK_CREATE_FAIL, BOOK_CREATE_REQUEST, BOOK_CREATE_SUCCESS, BOOK_DETAILS_FAIL, BOOK_DETAILS_REQUEST, BOOK_DETAILS_SUCCESS, BOOK_LIST_FAIL, BOOK_LIST_REQUEST, BOOK_LIST_SUCCESS, BOOK_MINE_LIST_FAIL, BOOK_MINE_LIST_REQUEST, BOOK_MINE_LIST_SUCCESS } from '../constants/bookConstants';
+import { BOOK_CREATE_FAIL, BOOK_CREATE_REQUEST, BOOK_CREATE_SUCCESS, BOOK_DELETE_FAIL, BOOK_DELETE_REQUEST, BOOK_DELETE_SUCCESS, BOOK_DETAILS_FAIL, BOOK_DETAILS_REQUEST, BOOK_DETAILS_SUCCESS, BOOK_LIST_FAIL, BOOK_LIST_REQUEST, BOOK_LIST_SUCCESS, BOOK_MINE_LIST_FAIL, BOOK_MINE_LIST_REQUEST, BOOK_MINE_LIST_SUCCESS } from '../constants/bookConstants';
 
 export const createBook = (book) => async (dispatch, getState) => {
     dispatch({ type: BOOK_CREATE_REQUEST, payload: book })
@@ -77,5 +77,22 @@ export const listBookings = () => async (dispatch, getState) => {
             ? error.response.data.message
             : error.message;
         dispatch({ type: BOOK_LIST_FAIL, payload: message })
+    }
+}
+
+export const deleteBook = (bookId) => async (dispatch, getState) => {
+    dispatch({ type: BOOK_DELETE_REQUEST, payload: bookId });
+    const { userSignin: { userInfo } } = getState();
+    try {
+        const { data } = Axios.delete(`/api/bookings/${bookId}`, {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+        });
+        dispatch({ type: BOOK_DELETE_SUCCESS, payload: data });
+    } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message;
+        dispatch({ type: BOOK_DELETE_FAIL, error: message });
     }
 }
