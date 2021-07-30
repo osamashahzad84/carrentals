@@ -12,7 +12,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/carrentals', {
+ // eslint-disable-next-line no-undef
+ db='mongodb+srv://carrent:<cars>@cluster0.nbylu.mongodb.net/carrentals?retryWrites=true&w=majority'
+
+mongoose.connect(process.env.db || 'mongodb://localhost/carrentals', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
