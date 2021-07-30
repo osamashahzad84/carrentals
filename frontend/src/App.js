@@ -6,6 +6,7 @@ import AdminRoute from './components/AdminRoute';
 import PrivateRoute from './components/PrivateRoute';
 import BookedScreen from './screens/BookedScreen';
 import BookingHistoryScreen from './screens/BookingHistoryScreen';
+import BookingListScreen from './screens/BookingListScreen';
 import BookingsScreen from './screens/BookingsScreen';
 import BookVehicleScreen from './screens/BookVehicleScreen';
 import CompleteBookingScreen from './screens/CompleteBookingScreen';
@@ -74,7 +75,7 @@ function App() {
                     <Link to="/vehiclelist">Vehicle List</Link>
                   </li>
                   <li>
-                    <Link to="/booklist">Booking List</Link>
+                    <Link to="/bookinglist">Booking List</Link>
                   </li>
                   <li>
                     <Link to="/userlist">Users</Link>
@@ -97,6 +98,7 @@ function App() {
           <Route path="/bookingHistory" component={BookingHistoryScreen}></Route>
           <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
           <AdminRoute path="/vehiclelist" component={VehicleListScreen}></AdminRoute>
+          <AdminRoute path="/bookinglist" component={BookingListScreen}></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">
