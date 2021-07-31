@@ -15,6 +15,7 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import SigninScreen from './screens/SigninScreen';
+import UserListScreen from './screens/UserListScreen';
 import VehicleEditScreen from './screens/VehicleEditScreen';
 import VehicleListScreen from './screens/VehicleListScreen';
 import VehicleScreen from './screens/VehicleScreen';
@@ -99,6 +100,7 @@ function App() {
           <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
           <AdminRoute path="/vehiclelist" component={VehicleListScreen}></AdminRoute>
           <AdminRoute path="/bookinglist" component={BookingListScreen}></AdminRoute>
+          <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row center">
